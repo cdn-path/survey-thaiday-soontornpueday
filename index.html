@@ -11,7 +11,7 @@
 
 body {
   font-family: 'Noto Sans Thai', sans-serif;
-  background: #f0f4ff;
+  background: #fff6df;
   min-height: 100vh;
   color: #1e1e2e;
 }
@@ -60,8 +60,8 @@ body {
   gap: 12px;
   background: #fafafa;
 }
-.opt:hover { border-color: #a78bfa; background: #faf5ff; }
-.opt.on    { border-color: #7c3aed; background: #ede9fe; }
+.opt:hover { border-color: #8ce0de; background: #f2fcfc; }
+.opt.on    { border-color: #4dbfb9; background: #e0f6f6; }
 .opt .dot  {
   width: 18px; height: 18px;
   border-radius: 50%;
@@ -71,8 +71,8 @@ body {
   display: flex; align-items: center; justify-content: center;
 }
 .opt.on .dot {
-  border-color: #7c3aed;
-  background: #7c3aed;
+  border-color: #4dbfb9;
+  background: #4dbfb9;
 }
 .opt.on .dot::after {
   content: '';
@@ -81,7 +81,7 @@ body {
   background: #fff;
 }
 .opt span { font-size: 14px; color: #374151; font-weight: 500; }
-.opt.on span { color: #5b21b6; font-weight: 600; }
+.opt.on span { color: #0f766e; font-weight: 600; }
 
 /* ─── Rating buttons ────────────────────── */
 .rating-wrap { display: flex; gap: 8px; }
@@ -104,15 +104,15 @@ body {
   transition: all .2s cubic-bezier(.34,1.56,.64,1);
 }
 .r-btn:hover .r-face {
-  border-color: #a78bfa;
-  background: #faf5ff;
+  border-color: #8ce0de;
+  background: #f2fcfc;
   transform: translateY(-2px);
 }
 .r-input:checked + .r-btn .r-face {
-  border-color: #7c3aed;
-  background: #7c3aed;
+  border-color: #4dbfb9;
+  background: #4dbfb9;
   transform: translateY(-3px) scale(1.06);
-  box-shadow: 0 6px 20px rgba(124,58,237,.3);
+  box-shadow: 0 6px 20px rgba(77,191,185,.3);
 }
 .r-num {
   font-size: 11px;
@@ -120,7 +120,7 @@ body {
   font-weight: 500;
   transition: color .15s;
 }
-.r-input:checked + .r-btn .r-num { color: #7c3aed; font-weight: 700; }
+.r-input:checked + .r-btn .r-num { color: #4dbfb9; font-weight: 700; }
 
 /* ─── Question item ─────────────────────── */
 .q-item { padding: 20px 0; border-bottom: 1px solid #f0f0f8; }
@@ -139,8 +139,8 @@ body {
   align-items: center;
   justify-content: center;
   min-width: 24px; height: 20px;
-  background: #ede9fe;
-  color: #7c3aed;
+  background: #e0f6f6;
+  color: #4dbfb9;
   border-radius: 6px;
   font-size: 11px;
   font-weight: 700;
@@ -155,7 +155,7 @@ body {
 }
 .s-bar-fill {
   height: 100%; border-radius: 99px;
-  background: linear-gradient(90deg, #7c3aed, #a855f7);
+  background: linear-gradient(90deg, #4dbfb9, #f49068);
   transition: width .6s cubic-bezier(.16,1,.3,1);
 }
 
@@ -191,8 +191,8 @@ body {
   background: #e0e0f0;
   transition: background .3s;
 }
-.prog-step.done { background: #7c3aed; }
-.prog-step.now  { background: linear-gradient(90deg, #7c3aed, #c084fc); }
+.prog-step.done { background: #4dbfb9; }
+.prog-step.now  { background: linear-gradient(90deg, #4dbfb9, #ffe495); }
 
 /* ─── Toast ─────────────────────────────── */
 #toast {
@@ -225,9 +225,9 @@ body {
   <!-- ── Logo area ─────────────────────── -->
   <div class="w-full max-w-lg mb-6">
     <div class="flex items-center gap-3 mb-4">
-      <div style="background:linear-gradient(135deg,#7c3aed,#a855f7)" class="w-10 h-10 rounded-xl flex items-center justify-center text-white text-lg flex-shrink-0 shadow-lg">📋</div>
+      <div style="background:linear-gradient(135deg,#4dbfb9,#f49068)" class="w-10 h-10 rounded-xl flex items-center justify-center text-white text-lg flex-shrink-0 shadow-lg">📋</div>
       <div>
-        <p class="text-xs font-semibold text-purple-500 tracking-widest uppercase">กลุ่มสาระการเรียนรู้ภาษาไทย</p>
+        <p class="text-xs font-semibold text-teal-500 tracking-widest uppercase">กลุ่มสาระการเรียนรู้ภาษาไทย</p>
         <p class="text-xs text-gray-400">โรงเรียนแกลง "วิทยสถาวร"</p>
       </div>
     </div>
@@ -239,7 +239,7 @@ body {
   <!-- ── Progress bar ──────────────────── -->
   <div id="prog" class="w-full max-w-lg mb-5 hidden">
     <div class="flex justify-between items-center mb-2">
-      <span id="prog-label" class="text-xs font-semibold text-purple-500"></span>
+      <span id="prog-label" class="text-xs font-semibold text-teal-500"></span>
       <span id="prog-count" class="text-xs text-gray-400"></span>
     </div>
     <div class="flex gap-1.5">
@@ -258,7 +258,7 @@ body {
     <div class="card">
 
       <!-- hero -->
-      <div style="background:linear-gradient(135deg,#7c3aed 0%,#a855f7 60%,#c084fc 100%);padding:36px 28px 32px;">
+      <div style="background:linear-gradient(135deg,#4dbfb9 0%,#f49068 60%,#ffe495 100%);padding:36px 28px 32px;">
         <div class="text-5xl mb-4">📝</div>
         <h2 style="font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:6px;">ยินดีต้อนรับ</h2>
         <p style="color:rgba(255,255,255,.8);font-size:13.5px;line-height:1.6;">
@@ -270,37 +270,37 @@ body {
 
         <!-- chips -->
         <div class="flex flex-wrap gap-2 mb-6">
-          <span style="background:#ede9fe;color:#7c3aed;font-size:12px;font-weight:600;padding:5px 12px;border-radius:99px;">🎯 5 ส่วน</span>
+          <span style="background:#e0f6f6;color:#4dbfb9;font-size:12px;font-weight:600;padding:5px 12px;border-radius:99px;">🎯 5 ส่วน</span>
           <span style="background:#fef9c3;color:#92400e;font-size:12px;font-weight:600;padding:5px 12px;border-radius:99px;">⏱ ~5 นาที</span>
           <span style="background:#d1fae5;color:#065f46;font-size:12px;font-weight:600;padding:5px 12px;border-radius:99px;">🔒 ข้อมูลเป็นความลับ</span>
         </div>
 
         <!-- section list -->
-        <div style="border:1.5px solid #ede9fe;border-radius:16px;overflow:hidden;margin-bottom:24px;">
+        <div style="border:1.5px solid #e0f6f6;border-radius:16px;overflow:hidden;margin-bottom:24px;">
           <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid #f0f0f8;">
-            <span style="background:#ede9fe;color:#7c3aed;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;">01</span>
+            <span style="background:#e0f6f6;color:#4dbfb9;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;">01</span>
             <span style="font-size:14px;font-weight:600;color:#374151;">ข้อมูลทั่วไป</span>
           </div>
           <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid #f0f0f8;">
-            <span style="background:#ede9fe;color:#7c3aed;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;">02</span>
+            <span style="background:#e0f6f6;color:#4dbfb9;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;">02</span>
             <div><p style="font-size:14px;font-weight:600;color:#374151;">ด้านรูปแบบงาน / ระยะเวลา</p><p style="font-size:11px;color:#9ca3af;margin-top:1px;">6 ข้อ · คะแนน 1–5</p></div>
           </div>
           <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid #f0f0f8;">
-            <span style="background:#ede9fe;color:#7c3aed;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;">03</span>
+            <span style="background:#e0f6f6;color:#4dbfb9;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;">03</span>
             <div><p style="font-size:14px;font-weight:600;color:#374151;">ด้านคณะกรรมการจัดงาน</p><p style="font-size:11px;color:#9ca3af;margin-top:1px;">5 ข้อ · คะแนน 1–5</p></div>
           </div>
           <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid #f0f0f8;">
-            <span style="background:#ede9fe;color:#7c3aed;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;">04</span>
+            <span style="background:#e0f6f6;color:#4dbfb9;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;">04</span>
             <div><p style="font-size:14px;font-weight:600;color:#374151;">ความพึงพอใจในการแข่งขัน</p><p style="font-size:11px;color:#9ca3af;margin-top:1px;">4 ข้อ · คะแนน 1–5</p></div>
           </div>
           <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;">
-            <span style="background:#ede9fe;color:#7c3aed;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;">05</span>
+            <span style="background:#e0f6f6;color:#4dbfb9;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;">05</span>
             <span style="font-size:14px;font-weight:600;color:#374151;">ข้อเสนอแนะ</span>
           </div>
         </div>
 
         <button class="btn-primary" onclick="goTo(1)"
-          style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;box-shadow:0 4px 20px rgba(124,58,237,.35);">
+          style="background:linear-gradient(135deg,#4dbfb9,#f49068);color:#fff;box-shadow:0 4px 20px rgba(77,191,185,.35);">
           เริ่มประเมิน <span style="font-size:18px;">→</span>
         </button>
       </div>
@@ -312,10 +312,10 @@ body {
   ════════════════════════════════════ -->
   <div class="page w-full max-w-lg" id="pg1">
     <div class="card">
-      <div class="band" style="background:#faf5ff;border-bottom:1.5px solid #ede9fe;">
-        <div class="band-num" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">1</div>
+      <div class="band" style="background:#f2fcfc;border-bottom:1.5px solid #e0f6f6;">
+        <div class="band-num" style="background:linear-gradient(135deg,#4dbfb9,#f49068);">1</div>
         <div>
-          <p style="font-size:11px;font-weight:700;color:#a78bfa;letter-spacing:.08em;text-transform:uppercase;">ส่วนที่ 1</p>
+          <p style="font-size:11px;font-weight:700;color:#8ce0de;letter-spacing:.08em;text-transform:uppercase;">ส่วนที่ 1</p>
           <p style="font-size:16px;font-weight:800;color:#1e1e2e;">ข้อมูลทั่วไป</p>
         </div>
       </div>
@@ -379,7 +379,7 @@ body {
 
       <div style="padding:0 28px 28px;">
         <button class="btn-primary" onclick="next(1)"
-          style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;box-shadow:0 4px 20px rgba(124,58,237,.3);">
+          style="background:linear-gradient(135deg,#4dbfb9,#f49068);color:#fff;box-shadow:0 4px 20px rgba(77,191,185,.3);">
           ถัดไป →
         </button>
       </div>
@@ -391,10 +391,10 @@ body {
   ════════════════════════════════════ -->
   <div class="page w-full max-w-lg" id="pg2">
     <div class="card">
-      <div class="band" style="background:#faf5ff;border-bottom:1.5px solid #ede9fe;">
-        <div class="band-num" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">2</div>
+      <div class="band" style="background:#f2fcfc;border-bottom:1.5px solid #e0f6f6;">
+        <div class="band-num" style="background:linear-gradient(135deg,#4dbfb9,#f49068);">2</div>
         <div>
-          <p style="font-size:11px;font-weight:700;color:#a78bfa;letter-spacing:.08em;text-transform:uppercase;">ส่วนที่ 2</p>
+          <p style="font-size:11px;font-weight:700;color:#8ce0de;letter-spacing:.08em;text-transform:uppercase;">ส่วนที่ 2</p>
           <p style="font-size:16px;font-weight:800;color:#1e1e2e;">ด้านรูปแบบงาน / ระยะเวลา</p>
           <p style="font-size:11.5px;color:#9ca3af;margin-top:2px;">1 = น้อยที่สุด &nbsp;·&nbsp; 5 = มากที่สุด</p>
         </div>
@@ -403,7 +403,7 @@ body {
       <div style="padding:20px 28px 28px;display:flex;gap:10px;">
         <button class="btn-back" onclick="goTo(1)">←</button>
         <button class="btn-primary" onclick="next(2)"
-          style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;box-shadow:0 4px 20px rgba(124,58,237,.3);">
+          style="background:linear-gradient(135deg,#4dbfb9,#f49068);color:#fff;box-shadow:0 4px 20px rgba(77,191,185,.3);">
           ถัดไป →
         </button>
       </div>
@@ -415,10 +415,10 @@ body {
   ════════════════════════════════════ -->
   <div class="page w-full max-w-lg" id="pg3">
     <div class="card">
-      <div class="band" style="background:#faf5ff;border-bottom:1.5px solid #ede9fe;">
-        <div class="band-num" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">3</div>
+      <div class="band" style="background:#f2fcfc;border-bottom:1.5px solid #e0f6f6;">
+        <div class="band-num" style="background:linear-gradient(135deg,#4dbfb9,#f49068);">3</div>
         <div>
-          <p style="font-size:11px;font-weight:700;color:#a78bfa;letter-spacing:.08em;text-transform:uppercase;">ส่วนที่ 3</p>
+          <p style="font-size:11px;font-weight:700;color:#8ce0de;letter-spacing:.08em;text-transform:uppercase;">ส่วนที่ 3</p>
           <p style="font-size:16px;font-weight:800;color:#1e1e2e;">ด้านคณะกรรมการจัดงาน</p>
           <p style="font-size:11.5px;color:#9ca3af;margin-top:2px;">1 = น้อยที่สุด &nbsp;·&nbsp; 5 = มากที่สุด</p>
         </div>
@@ -427,7 +427,7 @@ body {
       <div style="padding:20px 28px 28px;display:flex;gap:10px;">
         <button class="btn-back" onclick="goTo(2)">←</button>
         <button class="btn-primary" onclick="next(3)"
-          style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;box-shadow:0 4px 20px rgba(124,58,237,.3);">
+          style="background:linear-gradient(135deg,#4dbfb9,#f49068);color:#fff;box-shadow:0 4px 20px rgba(77,191,185,.3);">
           ถัดไป →
         </button>
       </div>
@@ -439,10 +439,10 @@ body {
   ════════════════════════════════════ -->
   <div class="page w-full max-w-lg" id="pg4">
     <div class="card">
-      <div class="band" style="background:#faf5ff;border-bottom:1.5px solid #ede9fe;">
-        <div class="band-num" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">4</div>
+      <div class="band" style="background:#f2fcfc;border-bottom:1.5px solid #e0f6f6;">
+        <div class="band-num" style="background:linear-gradient(135deg,#4dbfb9,#f49068);">4</div>
         <div>
-          <p style="font-size:11px;font-weight:700;color:#a78bfa;letter-spacing:.08em;text-transform:uppercase;">ส่วนที่ 4</p>
+          <p style="font-size:11px;font-weight:700;color:#8ce0de;letter-spacing:.08em;text-transform:uppercase;">ส่วนที่ 4</p>
           <p style="font-size:16px;font-weight:800;color:#1e1e2e;">ความพึงพอใจในการแข่งขัน</p>
           <p style="font-size:11.5px;color:#9ca3af;margin-top:2px;">1 = น้อยที่สุด &nbsp;·&nbsp; 5 = มากที่สุด</p>
         </div>
@@ -451,7 +451,7 @@ body {
       <div style="padding:20px 28px 28px;display:flex;gap:10px;">
         <button class="btn-back" onclick="goTo(3)">←</button>
         <button class="btn-primary" onclick="next(4)"
-          style="background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;box-shadow:0 4px 20px rgba(124,58,237,.3);">
+          style="background:linear-gradient(135deg,#4dbfb9,#f49068);color:#fff;box-shadow:0 4px 20px rgba(77,191,185,.3);">
           ถัดไป →
         </button>
       </div>
@@ -463,10 +463,10 @@ body {
   ════════════════════════════════════ -->
   <div class="page w-full max-w-lg" id="pg5">
     <div class="card">
-      <div class="band" style="background:#faf5ff;border-bottom:1.5px solid #ede9fe;">
-        <div class="band-num" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">5</div>
+      <div class="band" style="background:#f2fcfc;border-bottom:1.5px solid #e0f6f6;">
+        <div class="band-num" style="background:linear-gradient(135deg,#4dbfb9,#f49068);">5</div>
         <div>
-          <p style="font-size:11px;font-weight:700;color:#a78bfa;letter-spacing:.08em;text-transform:uppercase;">ส่วนที่ 5</p>
+          <p style="font-size:11px;font-weight:700;color:#8ce0de;letter-spacing:.08em;text-transform:uppercase;">ส่วนที่ 5</p>
           <p style="font-size:16px;font-weight:800;color:#1e1e2e;">ข้อเสนอแนะ</p>
         </div>
       </div>
@@ -482,14 +482,14 @@ body {
             style="width:100%;border:2px solid #e8e8f0;border-radius:14px;padding:14px 16px;
                    font-family:inherit;font-size:14px;color:#374151;background:#fafafa;
                    resize:none;outline:none;transition:border-color .15s;"
-            onfocus="this.style.borderColor='#7c3aed';this.style.background='#fff'"
+            onfocus="this.style.borderColor='#4dbfb9';this.style.background='#fff'"
             onblur="this.style.borderColor='#e8e8f0';this.style.background='#fafafa'"
             placeholder="พิมพ์ข้อเสนอแนะของท่านที่นี่..."></textarea>
         </div>
 
         <!-- score preview -->
-        <div style="background:#faf5ff;border:1.5px solid #ede9fe;border-radius:16px;padding:18px 20px;">
-          <p style="font-size:11px;font-weight:700;color:#a78bfa;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;">
+        <div style="background:#f2fcfc;border:1.5px solid #e0f6f6;border-radius:16px;padding:18px 20px;">
+          <p style="font-size:11px;font-weight:700;color:#8ce0de;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;">
             📊 สรุปคะแนนของท่าน
           </p>
           <div id="score-preview" style="display:flex;flex-direction:column;gap:10px;"></div>
@@ -692,7 +692,7 @@ function scoreBar(val, label) {
   <div style="display:flex;align-items:center;gap:10px;">
     <span style="font-size:12px;color:#6b7280;width:100px;flex-shrink:0;">${label}</span>
     <div class="s-bar-bg"><div class="s-bar-fill" style="width:${pct}%"></div></div>
-    <span style="font-size:13px;font-weight:700;color:#7c3aed;width:32px;text-align:right;">${val}</span>
+    <span style="font-size:13px;font-weight:700;color:#4dbfb9;width:32px;text-align:right;">${val}</span>
   </div>`;
 }
 
@@ -714,15 +714,15 @@ function buildFinalScores() {
               ${i < arr.length-1 ? 'border-bottom:1px solid #f0f0f8' : ''}">
       <span style="font-size:12px;color:#6b7280;width:96px;flex-shrink:0;">${GLABEL[k]}</span>
       <div class="s-bar-bg"><div class="s-bar-fill" style="width:${pct}%"></div></div>
-      <span style="font-size:14px;font-weight:700;color:#7c3aed;width:32px;text-align:right;">${a}</span>
+      <span style="font-size:14px;font-weight:700;color:#4dbfb9;width:32px;text-align:right;">${a}</span>
     </div>`;
   }).join('');
 
   document.getElementById('final-scores').innerHTML = `
     <div style="display:flex;align-items:center;justify-content:space-between;
-                padding:16px 18px;background:#faf5ff;border-bottom:1px solid #ede9fe;">
-      <span style="font-size:12px;font-weight:700;color:#a78bfa;letter-spacing:.06em;text-transform:uppercase;">คะแนนรวมเฉลี่ย</span>
-      <span style="font-size:1.5rem;font-weight:800;color:#7c3aed;">${total}<span style="font-size:13px;font-weight:500;color:#c4b5fd;">/5</span></span>
+                padding:16px 18px;background:#f2fcfc;border-bottom:1px solid #e0f6f6;">
+      <span style="font-size:12px;font-weight:700;color:#8ce0de;letter-spacing:.06em;text-transform:uppercase;">คะแนนรวมเฉลี่ย</span>
+      <span style="font-size:1.5rem;font-weight:800;color:#4dbfb9;">${total}<span style="font-size:13px;font-weight:500;color:#f49068;">/5</span></span>
     </div>
     ${rows}`;
 }
