@@ -1,804 +1,1478 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>แบบประเมินความพึงพอใจ</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+Thai+Looped:wght@700;800&display=swap" rel="stylesheet">
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>แบบประเมินความพึงพอใจ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Noto+Sans+Thai+Looped:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-body {
-  font-family: 'Noto Sans Thai', sans-serif;
-  background: #fff6df;
-  min-height: 100vh;
-  color: #1e1e2e;
-}
+      body {
+        font-family: "Noto Sans Thai", sans-serif;
+        background: #fff6df;
+        min-height: 100vh;
+        color: #1e1e2e;
+      }
 
-/* ─── Page wrapper ─────────────────────── */
-.page { display: none; }
-.page.show { display: block; animation: fadeUp .35s ease both; }
+      /* ─── Page wrapper ─────────────────────── */
+      .page {
+        display: none;
+      }
+      .page.show {
+        display: block;
+        animation: fadeUp 0.35s ease both;
+      }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-/* ─── Card ─────────────────────────────── */
-.card {
-  background: #fff;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 2px 16px rgba(0,0,0,.06), 0 0 0 1px rgba(0,0,0,.04);
-}
+      /* ─── Card ─────────────────────────────── */
+      .card {
+        background: #fff;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow:
+          0 2px 16px rgba(0, 0, 0, 0.06),
+          0 0 0 1px rgba(0, 0, 0, 0.04);
+      }
 
-/* ─── Section header band ───────────────── */
-.band {
-  padding: 20px 28px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.band-num {
-  width: 36px; height: 36px;
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 15px; color: #fff;
-  flex-shrink: 0;
-}
+      /* ─── Section header band ───────────────── */
+      .band {
+        padding: 20px 28px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .band-num {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 15px;
+        color: #fff;
+        flex-shrink: 0;
+      }
 
-/* ─── Option cards ──────────────────────── */
-.opt {
-  border: 2px solid #e8e8f0;
-  border-radius: 14px;
-  padding: 12px 16px;
-  cursor: pointer;
-  transition: all .16s;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: #fafafa;
-}
-.opt:hover { border-color: #8ce0de; background: #f2fcfc; }
-.opt.on    { border-color: #4dbfb9; background: #e0f6f6; }
-.opt .dot  {
-  width: 18px; height: 18px;
-  border-radius: 50%;
-  border: 2px solid #c4c4d4;
-  flex-shrink: 0;
-  transition: all .16s;
-  display: flex; align-items: center; justify-content: center;
-}
-.opt.on .dot {
-  border-color: #4dbfb9;
-  background: #4dbfb9;
-}
-.opt.on .dot::after {
-  content: '';
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: #fff;
-}
-.opt span { font-size: 14px; color: #374151; font-weight: 500; }
-.opt.on span { color: #0f766e; font-weight: 600; }
+      /* ─── Option cards ──────────────────────── */
+      .opt {
+        border: 2px solid #e8e8f0;
+        border-radius: 14px;
+        padding: 12px 16px;
+        cursor: pointer;
+        transition: all 0.16s;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #fafafa;
+      }
+      .opt:hover {
+        border-color: #8ce0de;
+        background: #f2fcfc;
+      }
+      .opt.on {
+        border-color: #4dbfb9;
+        background: #e0f6f6;
+      }
+      .opt .dot {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 2px solid #c4c4d4;
+        flex-shrink: 0;
+        transition: all 0.16s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .opt.on .dot {
+        border-color: #4dbfb9;
+        background: #4dbfb9;
+      }
+      .opt.on .dot::after {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #fff;
+      }
+      .opt span {
+        font-size: 14px;
+        color: #374151;
+        font-weight: 500;
+      }
+      .opt.on span {
+        color: #0f766e;
+        font-weight: 600;
+      }
 
-/* ─── Rating buttons ────────────────────── */
-.rating-wrap { display: flex; gap: 8px; }
-.r-input { display: none; }
-.r-btn {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-}
-.r-face {
-  width: 100%; height: 52px;
-  border-radius: 12px;
-  border: 2px solid #e8e8f0;
-  background: #f8f8fc;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem;
-  transition: all .2s cubic-bezier(.34,1.56,.64,1);
-}
-.r-btn:hover .r-face {
-  border-color: #8ce0de;
-  background: #f2fcfc;
-  transform: translateY(-2px);
-}
-.r-input:checked + .r-btn .r-face {
-  border-color: #4dbfb9;
-  background: #4dbfb9;
-  transform: translateY(-3px) scale(1.06);
-  box-shadow: 0 6px 20px rgba(77,191,185,.3);
-}
-.r-num {
-  font-size: 11px;
-  color: #9ca3af;
-  font-weight: 500;
-  transition: color .15s;
-}
-.r-input:checked + .r-btn .r-num { color: #4dbfb9; font-weight: 700; }
+      /* ─── Rating buttons ────────────────────── */
+      .rating-wrap {
+        display: flex;
+        gap: 8px;
+      }
+      .r-input {
+        display: none;
+      }
+      .r-btn {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+      }
+      .r-face {
+        width: 100%;
+        height: 52px;
+        border-radius: 12px;
+        border: 2px solid #e8e8f0;
+        background: #f8f8fc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .r-btn:hover .r-face {
+        border-color: #8ce0de;
+        background: #f2fcfc;
+        transform: translateY(-2px);
+      }
+      .r-input:checked + .r-btn .r-face {
+        border-color: #4dbfb9;
+        background: #4dbfb9;
+        transform: translateY(-3px) scale(1.06);
+        box-shadow: 0 6px 20px rgba(77, 191, 185, 0.3);
+      }
+      .r-num {
+        font-size: 11px;
+        color: #9ca3af;
+        font-weight: 500;
+        transition: color 0.15s;
+      }
+      .r-input:checked + .r-btn .r-num {
+        color: #4dbfb9;
+        font-weight: 700;
+      }
 
-/* ─── Question item ─────────────────────── */
-.q-item { padding: 20px 0; border-bottom: 1px solid #f0f0f8; }
-.q-item:last-child { border-bottom: none; }
-.q-label {
-  font-size: 13.5px;
-  font-weight: 600;
-  color: #374151;
-  margin-bottom: 14px;
-  line-height: 1.55;
-  display: flex;
-  gap: 8px;
-}
-.q-num {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 24px; height: 20px;
-  background: #e0f6f6;
-  color: #4dbfb9;
-  border-radius: 6px;
-  font-size: 11px;
-  font-weight: 700;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
+      /* ─── Question item ─────────────────────── */
+      .q-item {
+        padding: 20px 0;
+        border-bottom: 1px solid #f0f0f8;
+      }
+      .q-item:last-child {
+        border-bottom: none;
+      }
+      .q-label {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 14px;
+        line-height: 1.55;
+        display: flex;
+        gap: 8px;
+      }
+      .q-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 24px;
+        height: 20px;
+        background: #e0f6f6;
+        color: #4dbfb9;
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 700;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
 
-/* ─── Score bar ─────────────────────────── */
-.s-bar-bg {
-  height: 6px; background: #e8e8f0; border-radius: 99px;
-  flex: 1; overflow: hidden;
-}
-.s-bar-fill {
-  height: 100%; border-radius: 99px;
-  background: linear-gradient(90deg, #4dbfb9, #f49068);
-  transition: width .6s cubic-bezier(.16,1,.3,1);
-}
+      /* ─── Score bar ─────────────────────────── */
+      .s-bar-bg {
+        height: 6px;
+        background: #e8e8f0;
+        border-radius: 99px;
+        flex: 1;
+        overflow: hidden;
+      }
+      .s-bar-fill {
+        height: 100%;
+        border-radius: 99px;
+        background: linear-gradient(90deg, #4dbfb9, #f49068);
+        transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
 
-/* ─── Buttons ───────────────────────────── */
-.btn-primary {
-  width: 100%;
-  padding: 15px;
-  border-radius: 14px;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all .16s;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  border: none;
-}
-.btn-back {
-  padding: 15px 20px;
-  border-radius: 14px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all .16s;
-  background: #f0f0f8;
-  color: #6b7280;
-  border: none;
-  flex-shrink: 0;
-}
-.btn-back:hover { background: #e0e0f0; color: #374151; }
+      /* ─── Buttons ───────────────────────────── */
+      .btn-primary {
+        width: 100%;
+        padding: 15px;
+        border-radius: 14px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.16s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: none;
+      }
+      .btn-back {
+        padding: 15px 20px;
+        border-radius: 14px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.16s;
+        background: #f0f0f8;
+        color: #6b7280;
+        border: none;
+        flex-shrink: 0;
+      }
+      .btn-back:hover {
+        background: #e0e0f0;
+        color: #374151;
+      }
 
-/* ─── Progress ──────────────────────────── */
-.prog-step {
-  flex: 1; height: 4px; border-radius: 99px;
-  background: #e0e0f0;
-  transition: background .3s;
-}
-.prog-step.done { background: #4dbfb9; }
-.prog-step.now  { background: linear-gradient(90deg, #4dbfb9, #ffe495); }
+      /* ─── Progress ──────────────────────────── */
+      .prog-step {
+        flex: 1;
+        height: 4px;
+        border-radius: 99px;
+        background: #e0e0f0;
+        transition: background 0.3s;
+      }
+      .prog-step.done {
+        background: #4dbfb9;
+      }
+      .prog-step.now {
+        background: linear-gradient(90deg, #4dbfb9, #ffe495);
+      }
 
-/* ─── Toast ─────────────────────────────── */
-#toast {
-  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
-  background: #1e1e2e; color: #fff;
-  padding: 12px 20px; border-radius: 14px;
-  font-size: 14px; font-weight: 500;
-  box-shadow: 0 8px 32px rgba(0,0,0,.25);
-  z-index: 99; white-space: nowrap;
-  transition: transform .3s cubic-bezier(.34,1.56,.64,1), opacity .3s;
-  opacity: 0;
-}
-#toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+      /* ─── Toast ─────────────────────────────── */
+      #toast {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%) translateY(80px);
+        background: #1e1e2e;
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: 14px;
+        font-size: 14px;
+        font-weight: 500;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        z-index: 99;
+        white-space: nowrap;
+        transition:
+          transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+          opacity 0.3s;
+        opacity: 0;
+      }
+      #toast.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
 
-/* ─── Spin ──────────────────────────────── */
-@keyframes spin { to { transform: rotate(360deg); } }
-.spin { display: inline-block; animation: spin .7s linear infinite; }
+      /* ─── Spin ──────────────────────────────── */
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .spin {
+        display: inline-block;
+        animation: spin 0.7s linear infinite;
+      }
 
-@media (max-width: 480px) {
-  .r-face { height: 44px; font-size: 1.2rem; }
-}
-</style>
-</head>
-<body>
+      @media (max-width: 480px) {
+        .r-face {
+          height: 44px;
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="toast"></div>
 
-<div id="toast"></div>
-
-<div class="min-h-screen flex flex-col items-center py-8 px-4">
-
-  <!-- ── Logo area ─────────────────────── -->
-  <div class="w-full max-w-lg mb-6">
-    <div class="flex items-center gap-3 mb-4">
-      <div style="background:linear-gradient(135deg,#4dbfb9,#f49068)" class="w-10 h-10 rounded-xl flex items-center justify-center text-white text-lg flex-shrink-0 shadow-lg">📋</div>
-      <div>
-        <p class="text-xs font-semibold text-teal-500 tracking-widest uppercase">กลุ่มสาระการเรียนรู้ภาษาไทย</p>
-        <p class="text-xs text-gray-400">โรงเรียนแกลง "วิทยสถาวร"</p>
+    <div class="min-h-screen flex flex-col items-center py-8 px-4">
+      <!-- ── Logo area ─────────────────────── -->
+      <div class="w-full max-w-lg mb-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div
+            style="background: linear-gradient(135deg, #4dbfb9, #f49068)"
+            class="w-10 h-10 rounded-xl flex items-center justify-center text-white text-lg flex-shrink-0 shadow-lg"
+          >
+            📋
+          </div>
+          <div>
+            <p
+              class="text-xs font-semibold text-teal-500 tracking-widest uppercase"
+            >
+              กลุ่มสาระการเรียนรู้ภาษาไทย
+            </p>
+            <p class="text-xs text-gray-400">โรงเรียนแกลง "วิทยสถาวร"</p>
+          </div>
+        </div>
+        <h1
+          style="
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1.3;
+            color: #1e1e2e;
+          "
+        >
+          แบบประเมินความพึงพอใจกิจกรรมภาษาไทยภาษาชาติ รฤกปราชญ์มหากวี
+          (วันสุนทรภู่และวันภาษาไทยแห่งชาติ) ประจำปี ๒๕๖๙
+        </h1>
       </div>
-    </div>
-    <h1 style="font-size:1.6rem;font-weight:800;line-height:1.3;color:#1e1e2e;">
-     แบบประเมินความพึงพอใจกิจกรรมภาษาไทยภาษาชาติ รฤกปราชญ์มหากวี (วันสุนทรภู่และวันภาษาไทยแห่งชาติ) ประจำปี ๒๕๖๙
-    </h1>
-  </div>
 
-  <!-- ── Progress bar ──────────────────── -->
-  <div id="prog" class="w-full max-w-lg mb-5 hidden">
-    <div class="flex justify-between items-center mb-2">
-      <span id="prog-label" class="text-xs font-semibold text-teal-500"></span>
-      <span id="prog-count" class="text-xs text-gray-400"></span>
-    </div>
-    <div class="flex gap-1.5">
-      <div class="prog-step" id="ps1"></div>
-      <div class="prog-step" id="ps2"></div>
-      <div class="prog-step" id="ps3"></div>
-      <div class="prog-step" id="ps4"></div>
-      <div class="prog-step" id="ps5"></div>
-    </div>
-  </div>
+      <!-- ── Progress bar ──────────────────── -->
+      <div id="prog" class="w-full max-w-lg mb-5 hidden">
+        <div class="flex justify-between items-center mb-2">
+          <span
+            id="prog-label"
+            class="text-xs font-semibold text-teal-500"
+          ></span>
+          <span id="prog-count" class="text-xs text-gray-400"></span>
+        </div>
+        <div class="flex gap-1.5">
+          <div class="prog-step" id="ps1"></div>
+          <div class="prog-step" id="ps2"></div>
+          <div class="prog-step" id="ps3"></div>
+          <div class="prog-step" id="ps4"></div>
+          <div class="prog-step" id="ps5"></div>
+        </div>
+      </div>
 
-  <!-- ════════════════════════════════════
+      <!-- ════════════════════════════════════
        PAGE 0 — WELCOME
   ════════════════════════════════════ -->
-  <div class="page show w-full max-w-lg" id="pg0">
-    <div class="card">
+      <div class="page show w-full max-w-lg" id="pg0">
+        <div class="card">
+          <!-- hero -->
+          <div
+            style="
+              background: linear-gradient(
+                135deg,
+                #4dbfb9 0%,
+                #f49068 60%,
+                #ffe495 100%
+              );
+              padding: 36px 28px 32px;
+            "
+          >
+            <div class="text-5xl mb-4">📝</div>
+            <h2
+              style="
+                font-size: 1.35rem;
+                font-weight: 800;
+                color: #fff;
+                margin-bottom: 6px;
+              "
+            >
+              ยินดีต้อนรับ
+            </h2>
+            <p
+              style="
+                color: rgba(255, 255, 255, 0.8);
+                font-size: 13.5px;
+                line-height: 1.6;
+              "
+            >
+              ขอเชิญร่วมประเมินความพึงพอใจ<br />เพื่อพัฒนากิจกรรมให้ดียิ่งขึ้น
+            </p>
+          </div>
 
-      <!-- hero -->
-      <div style="background:linear-gradient(135deg,#4dbfb9 0%,#f49068 60%,#ffe495 100%);padding:36px 28px 32px;">
-        <div class="text-5xl mb-4">📝</div>
-        <h2 style="font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:6px;">ยินดีต้อนรับ</h2>
-        <p style="color:rgba(255,255,255,.8);font-size:13.5px;line-height:1.6;">
-          ขอเชิญร่วมประเมินความพึงพอใจ<br>เพื่อพัฒนากิจกรรมให้ดียิ่งขึ้น
-        </p>
+          <div class="p-7">
+            <!-- chips -->
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span
+                style="
+                  background: #e0f6f6;
+                  color: #4dbfb9;
+                  font-size: 12px;
+                  font-weight: 600;
+                  padding: 5px 12px;
+                  border-radius: 99px;
+                "
+                >🎯 5 ส่วน</span
+              >
+              <span
+                style="
+                  background: #fef9c3;
+                  color: #92400e;
+                  font-size: 12px;
+                  font-weight: 600;
+                  padding: 5px 12px;
+                  border-radius: 99px;
+                "
+                >⏱ ~5 นาที</span
+              >
+              <span
+                style="
+                  background: #d1fae5;
+                  color: #065f46;
+                  font-size: 12px;
+                  font-weight: 600;
+                  padding: 5px 12px;
+                  border-radius: 99px;
+                "
+                >🔒 ข้อมูลเป็นความลับ</span
+              >
+            </div>
+
+            <!-- section list -->
+            <div
+              style="
+                border: 1.5px solid #e0f6f6;
+                border-radius: 16px;
+                overflow: hidden;
+                margin-bottom: 24px;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  padding: 14px 18px;
+                  border-bottom: 1px solid #f0f0f8;
+                "
+              >
+                <span
+                  style="
+                    background: #e0f6f6;
+                    color: #4dbfb9;
+                    font-size: 11px;
+                    font-weight: 700;
+                    padding: 3px 8px;
+                    border-radius: 6px;
+                  "
+                  >01</span
+                >
+                <span style="font-size: 14px; font-weight: 600; color: #374151"
+                  >ข้อมูลทั่วไป</span
+                >
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  padding: 14px 18px;
+                  border-bottom: 1px solid #f0f0f8;
+                "
+              >
+                <span
+                  style="
+                    background: #e0f6f6;
+                    color: #4dbfb9;
+                    font-size: 11px;
+                    font-weight: 700;
+                    padding: 3px 8px;
+                    border-radius: 6px;
+                  "
+                  >02</span
+                >
+                <div>
+                  <p style="font-size: 14px; font-weight: 600; color: #374151">
+                    ด้านรูปแบบงาน / ระยะเวลา
+                  </p>
+                  <p style="font-size: 11px; color: #9ca3af; margin-top: 1px">
+                    6 ข้อ · คะแนน 1–5
+                  </p>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  padding: 14px 18px;
+                  border-bottom: 1px solid #f0f0f8;
+                "
+              >
+                <span
+                  style="
+                    background: #e0f6f6;
+                    color: #4dbfb9;
+                    font-size: 11px;
+                    font-weight: 700;
+                    padding: 3px 8px;
+                    border-radius: 6px;
+                  "
+                  >03</span
+                >
+                <div>
+                  <p style="font-size: 14px; font-weight: 600; color: #374151">
+                    ด้านคณะกรรมการจัดงาน
+                  </p>
+                  <p style="font-size: 11px; color: #9ca3af; margin-top: 1px">
+                    5 ข้อ · คะแนน 1–5
+                  </p>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  padding: 14px 18px;
+                  border-bottom: 1px solid #f0f0f8;
+                "
+              >
+                <span
+                  style="
+                    background: #e0f6f6;
+                    color: #4dbfb9;
+                    font-size: 11px;
+                    font-weight: 700;
+                    padding: 3px 8px;
+                    border-radius: 6px;
+                  "
+                  >04</span
+                >
+                <div>
+                  <p style="font-size: 14px; font-weight: 600; color: #374151">
+                    ความพึงพอใจในการแข่งขัน
+                  </p>
+                  <p style="font-size: 11px; color: #9ca3af; margin-top: 1px">
+                    4 ข้อ · คะแนน 1–5
+                  </p>
+                </div>
+              </div>
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                  padding: 14px 18px;
+                "
+              >
+                <span
+                  style="
+                    background: #e0f6f6;
+                    color: #4dbfb9;
+                    font-size: 11px;
+                    font-weight: 700;
+                    padding: 3px 8px;
+                    border-radius: 6px;
+                  "
+                  >05</span
+                >
+                <span style="font-size: 14px; font-weight: 600; color: #374151"
+                  >ข้อเสนอแนะ</span
+                >
+              </div>
+            </div>
+
+            <button
+              class="btn-primary"
+              onclick="goTo(1)"
+              style="
+                background: linear-gradient(135deg, #4dbfb9, #f49068);
+                color: #fff;
+                box-shadow: 0 4px 20px rgba(77, 191, 185, 0.35);
+              "
+            >
+              เริ่มประเมิน <span style="font-size: 18px">→</span>
+            </button>
+          </div>
+        </div>
       </div>
 
-      <div class="p-7">
-
-        <!-- chips -->
-        <div class="flex flex-wrap gap-2 mb-6">
-          <span style="background:#e0f6f6;color:#4dbfb9;font-size:12px;font-weight:600;padding:5px 12px;border-radius:99px;">🎯 5 ส่วน</span>
-          <span style="background:#fef9c3;color:#92400e;font-size:12px;font-weight:600;padding:5px 12px;border-radius:99px;">⏱ ~5 นาที</span>
-          <span style="background:#d1fae5;color:#065f46;font-size:12px;font-weight:600;padding:5px 12px;border-radius:99px;">🔒 ข้อมูลเป็นความลับ</span>
-        </div>
-
-        <!-- section list -->
-        <div style="border:1.5px solid #e0f6f6;border-radius:16px;overflow:hidden;margin-bottom:24px;">
-          <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid #f0f0f8;">
-            <span style="background:#e0f6f6;color:#4dbfb9;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;">01</span>
-            <span style="font-size:14px;font-weight:600;color:#374151;">ข้อมูลทั่วไป</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid #f0f0f8;">
-            <span style="background:#e0f6f6;color:#4dbfb9;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;">02</span>
-            <div><p style="font-size:14px;font-weight:600;color:#374151;">ด้านรูปแบบงาน / ระยะเวลา</p><p style="font-size:11px;color:#9ca3af;margin-top:1px;">6 ข้อ · คะแนน 1–5</p></div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid #f0f0f8;">
-            <span style="background:#e0f6f6;color:#4dbfb9;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;">03</span>
-            <div><p style="font-size:14px;font-weight:600;color:#374151;">ด้านคณะกรรมการจัดงาน</p><p style="font-size:11px;color:#9ca3af;margin-top:1px;">5 ข้อ · คะแนน 1–5</p></div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid #f0f0f8;">
-            <span style="background:#e0f6f6;color:#4dbfb9;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;">04</span>
-            <div><p style="font-size:14px;font-weight:600;color:#374151;">ความพึงพอใจในการแข่งขัน</p><p style="font-size:11px;color:#9ca3af;margin-top:1px;">4 ข้อ · คะแนน 1–5</p></div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;padding:14px 18px;">
-            <span style="background:#e0f6f6;color:#4dbfb9;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;">05</span>
-            <span style="font-size:14px;font-weight:600;color:#374151;">ข้อเสนอแนะ</span>
-          </div>
-        </div>
-
-        <button class="btn-primary" onclick="goTo(1)"
-          style="background:linear-gradient(135deg,#4dbfb9,#f49068);color:#fff;box-shadow:0 4px 20px rgba(77,191,185,.35);">
-          เริ่มประเมิน <span style="font-size:18px;">→</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════
+      <!-- ════════════════════════════════════
        PAGE 1 — ข้อมูลทั่วไป
   ════════════════════════════════════ -->
-  <div class="page w-full max-w-lg" id="pg1">
-    <div class="card">
-      <div class="band" style="background:#f2fcfc;border-bottom:1.5px solid #e0f6f6;">
-        <div class="band-num" style="background:linear-gradient(135deg,#4dbfb9,#f49068);">1</div>
-        <div>
-          <p style="font-size:11px;font-weight:700;color:#8ce0de;letter-spacing:.08em;text-transform:uppercase;">ส่วนที่ 1</p>
-          <p style="font-size:16px;font-weight:800;color:#1e1e2e;">ข้อมูลทั่วไป</p>
-        </div>
-      </div>
+      <div class="page w-full max-w-lg" id="pg1">
+        <div class="card">
+          <div
+            class="band"
+            style="background: #f2fcfc; border-bottom: 1.5px solid #e0f6f6"
+          >
+            <div
+              class="band-num"
+              style="background: linear-gradient(135deg, #4dbfb9, #f49068)"
+            >
+              1
+            </div>
+            <div>
+              <p
+                style="
+                  font-size: 11px;
+                  font-weight: 700;
+                  color: #8ce0de;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                "
+              >
+                ส่วนที่ 1
+              </p>
+              <p style="font-size: 16px; font-weight: 800; color: #1e1e2e">
+                ข้อมูลทั่วไป
+              </p>
+            </div>
+          </div>
 
-      <div style="padding:24px 28px;display:flex;flex-direction:column;gap:24px;">
+          <div
+            style="
+              padding: 24px 28px;
+              display: flex;
+              flex-direction: column;
+              gap: 24px;
+            "
+          >
+            <!-- สถานภาพ -->
+            <div>
+              <p
+                style="
+                  font-size: 13.5px;
+                  font-weight: 700;
+                  color: #374151;
+                  margin-bottom: 12px;
+                "
+              >
+                สถานภาพผู้ตอบแบบสอบถาม <span style="color: #ef4444">*</span>
+              </p>
+              <div
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px"
+              >
+                <label class="opt" data-name="status" data-val="นักเรียน">
+                  <div class="dot"></div>
+                  <span>นักเรียน</span>
+                  <input type="radio" name="status" value="นักเรียน" hidden />
+                </label>
+                <label class="opt" data-name="status" data-val="ครู / อาจารย์">
+                  <div class="dot"></div>
+                  <span>ครู / อาจารย์</span>
+                  <input
+                    type="radio"
+                    name="status"
+                    value="ครู / อาจารย์"
+                    hidden
+                  />
+                </label>
+              </div>
+            </div>
 
-        <!-- สถานภาพ -->
-        <div>
-          <p style="font-size:13.5px;font-weight:700;color:#374151;margin-bottom:12px;">
-            สถานภาพผู้ตอบแบบสอบถาม <span style="color:#ef4444;">*</span>
-          </p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-            <label class="opt" data-name="status" data-val="นักเรียน">
-              <div class="dot"></div><span>นักเรียน</span>
-              <input type="radio" name="status" value="นักเรียน" hidden>
-            </label>
-            <label class="opt" data-name="status" data-val="ครู / อาจารย์">
-              <div class="dot"></div><span>ครู / อาจารย์</span>
-              <input type="radio" name="status" value="ครู / อาจารย์" hidden>
-            </label>
-            <label class="opt" data-name="status" data-val="ประชาชนทั่วไป">
-              <div class="dot"></div><span>ประชาชนทั่วไป</span>
-              <input type="radio" name="status" value="ประชาชนทั่วไป" hidden>
-            </label>
-            <label class="opt" data-name="status" data-val="อื่นๆ">
-              <div class="dot"></div><span>อื่นๆ</span>
-              <input type="radio" name="status" value="อื่นๆ" hidden>
-            </label>
+            <!-- ช่องทางข่าว -->
+            <div>
+              <p
+                style="
+                  font-size: 13.5px;
+                  font-weight: 700;
+                  color: #374151;
+                  margin-bottom: 12px;
+                "
+              >
+                ท่านทราบข่าวการจัดกิจกรรมจากที่ใด
+                <span style="color: #ef4444">*</span>
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 8px">
+                <label class="opt" data-name="news" data-val="กลุ่มเฟซบุ๊ก">
+                  <div class="dot"></div>
+                  <span>📘 กลุ่มเฟซบุ๊ก</span>
+                  <input type="radio" name="news" value="กลุ่มเฟซบุ๊ก" hidden />
+                </label>
+                <label class="opt" data-name="news" data-val="กลุ่มไลน์">
+                  <div class="dot"></div>
+                  <span>💬 กลุ่มไลน์</span>
+                  <input type="radio" name="news" value="กลุ่มไลน์" hidden />
+                </label>
+                <label
+                  class="opt"
+                  data-name="news"
+                  data-val="เพจกลุ่มสาระการเรียนรู้ ภาษาไทย โรงเรียนแกลง"
+                >
+                  <div class="dot"></div>
+                  <span>📱 เพจกลุ่มสาระการเรียนรู้ภาษาไทย</span>
+                  <input
+                    type="radio"
+                    name="news"
+                    value="เพจกลุ่มสาระการเรียนรู้ ภาษาไทย โรงเรียนแกลง"
+                    hidden
+                  />
+                </label>
+                <label class="opt" data-name="news" data-val="หนังสือส่ง">
+                  <div class="dot"></div>
+                  <span>📄 หนังสือส่ง</span>
+                  <input type="radio" name="news" value="หนังสือส่ง" hidden />
+                </label>
+                <label class="opt" data-name="news" data-val="อื่นๆ">
+                  <div class="dot"></div>
+                  <span>🔹 อื่นๆ</span>
+                  <input type="radio" name="news" value="อื่นๆ" hidden />
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div style="padding: 0 28px 28px">
+            <button
+              class="btn-primary"
+              onclick="next(1)"
+              style="
+                background: linear-gradient(135deg, #4dbfb9, #f49068);
+                color: #fff;
+                box-shadow: 0 4px 20px rgba(77, 191, 185, 0.3);
+              "
+            >
+              ถัดไป →
+            </button>
           </div>
         </div>
-
-        <!-- ช่องทางข่าว -->
-        <div>
-          <p style="font-size:13.5px;font-weight:700;color:#374151;margin-bottom:12px;">
-            ท่านทราบข่าวการจัดกิจกรรมจากที่ใด <span style="color:#ef4444;">*</span>
-          </p>
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <label class="opt" data-name="news" data-val="กลุ่มเฟซบุ๊ก">
-              <div class="dot"></div><span>📘 กลุ่มเฟซบุ๊ก</span>
-              <input type="radio" name="news" value="กลุ่มเฟซบุ๊ก" hidden>
-            </label>
-            <label class="opt" data-name="news" data-val="กลุ่มไลน์">
-              <div class="dot"></div><span>💬 กลุ่มไลน์</span>
-              <input type="radio" name="news" value="กลุ่มไลน์" hidden>
-            </label>
-            <label class="opt" data-name="news" data-val="เพจกลุ่มสาระการเรียนรู้ ภาษาไทย โรงเรียนแกลง">
-              <div class="dot"></div><span>📱 เพจกลุ่มสาระการเรียนรู้ภาษาไทย</span>
-              <input type="radio" name="news" value="เพจกลุ่มสาระการเรียนรู้ ภาษาไทย โรงเรียนแกลง" hidden>
-            </label>
-            <label class="opt" data-name="news" data-val="หนังสือส่ง">
-              <div class="dot"></div><span>📄 หนังสือส่ง</span>
-              <input type="radio" name="news" value="หนังสือส่ง" hidden>
-            </label>
-            <label class="opt" data-name="news" data-val="อื่นๆ">
-              <div class="dot"></div><span>🔹 อื่นๆ</span>
-              <input type="radio" name="news" value="อื่นๆ" hidden>
-            </label>
-          </div>
-        </div>
       </div>
 
-      <div style="padding:0 28px 28px;">
-        <button class="btn-primary" onclick="next(1)"
-          style="background:linear-gradient(135deg,#4dbfb9,#f49068);color:#fff;box-shadow:0 4px 20px rgba(77,191,185,.3);">
-          ถัดไป →
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════
+      <!-- ════════════════════════════════════
        PAGE 2 — รูปแบบงาน
   ════════════════════════════════════ -->
-  <div class="page w-full max-w-lg" id="pg2">
-    <div class="card">
-      <div class="band" style="background:#f2fcfc;border-bottom:1.5px solid #e0f6f6;">
-        <div class="band-num" style="background:linear-gradient(135deg,#4dbfb9,#f49068);">2</div>
-        <div>
-          <p style="font-size:11px;font-weight:700;color:#8ce0de;letter-spacing:.08em;text-transform:uppercase;">ส่วนที่ 2</p>
-          <p style="font-size:16px;font-weight:800;color:#1e1e2e;">ด้านรูปแบบงาน / ระยะเวลา</p>
-          <p style="font-size:11.5px;color:#9ca3af;margin-top:2px;">1 = น้อยที่สุด &nbsp;·&nbsp; 5 = มากที่สุด</p>
+      <div class="page w-full max-w-lg" id="pg2">
+        <div class="card">
+          <div
+            class="band"
+            style="background: #f2fcfc; border-bottom: 1.5px solid #e0f6f6"
+          >
+            <div
+              class="band-num"
+              style="background: linear-gradient(135deg, #4dbfb9, #f49068)"
+            >
+              2
+            </div>
+            <div>
+              <p
+                style="
+                  font-size: 11px;
+                  font-weight: 700;
+                  color: #8ce0de;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                "
+              >
+                ส่วนที่ 2
+              </p>
+              <p style="font-size: 16px; font-weight: 800; color: #1e1e2e">
+                ด้านรูปแบบงาน / ระยะเวลา
+              </p>
+              <p style="font-size: 11.5px; color: #9ca3af; margin-top: 2px">
+                1 = น้อยที่สุด &nbsp;·&nbsp; 5 = มากที่สุด
+              </p>
+            </div>
+          </div>
+          <div style="padding: 8px 28px 4px" id="q-pg2"></div>
+          <div style="padding: 20px 28px 28px; display: flex; gap: 10px">
+            <button class="btn-back" onclick="goTo(1)">←</button>
+            <button
+              class="btn-primary"
+              onclick="next(2)"
+              style="
+                background: linear-gradient(135deg, #4dbfb9, #f49068);
+                color: #fff;
+                box-shadow: 0 4px 20px rgba(77, 191, 185, 0.3);
+              "
+            >
+              ถัดไป →
+            </button>
+          </div>
         </div>
       </div>
-      <div style="padding:8px 28px 4px;" id="q-pg2"></div>
-      <div style="padding:20px 28px 28px;display:flex;gap:10px;">
-        <button class="btn-back" onclick="goTo(1)">←</button>
-        <button class="btn-primary" onclick="next(2)"
-          style="background:linear-gradient(135deg,#4dbfb9,#f49068);color:#fff;box-shadow:0 4px 20px rgba(77,191,185,.3);">
-          ถัดไป →
-        </button>
-      </div>
-    </div>
-  </div>
 
-  <!-- ════════════════════════════════════
+      <!-- ════════════════════════════════════
        PAGE 3 — คณะกรรมการ
   ════════════════════════════════════ -->
-  <div class="page w-full max-w-lg" id="pg3">
-    <div class="card">
-      <div class="band" style="background:#f2fcfc;border-bottom:1.5px solid #e0f6f6;">
-        <div class="band-num" style="background:linear-gradient(135deg,#4dbfb9,#f49068);">3</div>
-        <div>
-          <p style="font-size:11px;font-weight:700;color:#8ce0de;letter-spacing:.08em;text-transform:uppercase;">ส่วนที่ 3</p>
-          <p style="font-size:16px;font-weight:800;color:#1e1e2e;">ด้านคณะกรรมการจัดงาน</p>
-          <p style="font-size:11.5px;color:#9ca3af;margin-top:2px;">1 = น้อยที่สุด &nbsp;·&nbsp; 5 = มากที่สุด</p>
+      <div class="page w-full max-w-lg" id="pg3">
+        <div class="card">
+          <div
+            class="band"
+            style="background: #f2fcfc; border-bottom: 1.5px solid #e0f6f6"
+          >
+            <div
+              class="band-num"
+              style="background: linear-gradient(135deg, #4dbfb9, #f49068)"
+            >
+              3
+            </div>
+            <div>
+              <p
+                style="
+                  font-size: 11px;
+                  font-weight: 700;
+                  color: #8ce0de;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                "
+              >
+                ส่วนที่ 3
+              </p>
+              <p style="font-size: 16px; font-weight: 800; color: #1e1e2e">
+                ด้านคณะกรรมการจัดงาน
+              </p>
+              <p style="font-size: 11.5px; color: #9ca3af; margin-top: 2px">
+                1 = น้อยที่สุด &nbsp;·&nbsp; 5 = มากที่สุด
+              </p>
+            </div>
+          </div>
+          <div style="padding: 8px 28px 4px" id="q-pg3"></div>
+          <div style="padding: 20px 28px 28px; display: flex; gap: 10px">
+            <button class="btn-back" onclick="goTo(2)">←</button>
+            <button
+              class="btn-primary"
+              onclick="next(3)"
+              style="
+                background: linear-gradient(135deg, #4dbfb9, #f49068);
+                color: #fff;
+                box-shadow: 0 4px 20px rgba(77, 191, 185, 0.3);
+              "
+            >
+              ถัดไป →
+            </button>
+          </div>
         </div>
       </div>
-      <div style="padding:8px 28px 4px;" id="q-pg3"></div>
-      <div style="padding:20px 28px 28px;display:flex;gap:10px;">
-        <button class="btn-back" onclick="goTo(2)">←</button>
-        <button class="btn-primary" onclick="next(3)"
-          style="background:linear-gradient(135deg,#4dbfb9,#f49068);color:#fff;box-shadow:0 4px 20px rgba(77,191,185,.3);">
-          ถัดไป →
-        </button>
-      </div>
-    </div>
-  </div>
 
-  <!-- ════════════════════════════════════
+      <!-- ════════════════════════════════════
        PAGE 4 — ความพึงพอใจ
   ════════════════════════════════════ -->
-  <div class="page w-full max-w-lg" id="pg4">
-    <div class="card">
-      <div class="band" style="background:#f2fcfc;border-bottom:1.5px solid #e0f6f6;">
-        <div class="band-num" style="background:linear-gradient(135deg,#4dbfb9,#f49068);">4</div>
-        <div>
-          <p style="font-size:11px;font-weight:700;color:#8ce0de;letter-spacing:.08em;text-transform:uppercase;">ส่วนที่ 4</p>
-          <p style="font-size:16px;font-weight:800;color:#1e1e2e;">ความพึงพอใจในการแข่งขัน</p>
-          <p style="font-size:11.5px;color:#9ca3af;margin-top:2px;">1 = น้อยที่สุด &nbsp;·&nbsp; 5 = มากที่สุด</p>
+      <div class="page w-full max-w-lg" id="pg4">
+        <div class="card">
+          <div
+            class="band"
+            style="background: #f2fcfc; border-bottom: 1.5px solid #e0f6f6"
+          >
+            <div
+              class="band-num"
+              style="background: linear-gradient(135deg, #4dbfb9, #f49068)"
+            >
+              4
+            </div>
+            <div>
+              <p
+                style="
+                  font-size: 11px;
+                  font-weight: 700;
+                  color: #8ce0de;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                "
+              >
+                ส่วนที่ 4
+              </p>
+              <p style="font-size: 16px; font-weight: 800; color: #1e1e2e">
+                ความพึงพอใจในการแข่งขัน
+              </p>
+              <p style="font-size: 11.5px; color: #9ca3af; margin-top: 2px">
+                1 = น้อยที่สุด &nbsp;·&nbsp; 5 = มากที่สุด
+              </p>
+            </div>
+          </div>
+          <div style="padding: 8px 28px 4px" id="q-pg4"></div>
+          <div style="padding: 20px 28px 28px; display: flex; gap: 10px">
+            <button class="btn-back" onclick="goTo(3)">←</button>
+            <button
+              class="btn-primary"
+              onclick="next(4)"
+              style="
+                background: linear-gradient(135deg, #4dbfb9, #f49068);
+                color: #fff;
+                box-shadow: 0 4px 20px rgba(77, 191, 185, 0.3);
+              "
+            >
+              ถัดไป →
+            </button>
+          </div>
         </div>
       </div>
-      <div style="padding:8px 28px 4px;" id="q-pg4"></div>
-      <div style="padding:20px 28px 28px;display:flex;gap:10px;">
-        <button class="btn-back" onclick="goTo(3)">←</button>
-        <button class="btn-primary" onclick="next(4)"
-          style="background:linear-gradient(135deg,#4dbfb9,#f49068);color:#fff;box-shadow:0 4px 20px rgba(77,191,185,.3);">
-          ถัดไป →
-        </button>
-      </div>
-    </div>
-  </div>
 
-  <!-- ════════════════════════════════════
+      <!-- ════════════════════════════════════
        PAGE 5 — ข้อเสนอแนะ
   ════════════════════════════════════ -->
-  <div class="page w-full max-w-lg" id="pg5">
-    <div class="card">
-      <div class="band" style="background:#f2fcfc;border-bottom:1.5px solid #e0f6f6;">
-        <div class="band-num" style="background:linear-gradient(135deg,#4dbfb9,#f49068);">5</div>
-        <div>
-          <p style="font-size:11px;font-weight:700;color:#8ce0de;letter-spacing:.08em;text-transform:uppercase;">ส่วนที่ 5</p>
-          <p style="font-size:16px;font-weight:800;color:#1e1e2e;">ข้อเสนอแนะ</p>
+      <div class="page w-full max-w-lg" id="pg5">
+        <div class="card">
+          <div
+            class="band"
+            style="background: #f2fcfc; border-bottom: 1.5px solid #e0f6f6"
+          >
+            <div
+              class="band-num"
+              style="background: linear-gradient(135deg, #4dbfb9, #f49068)"
+            >
+              5
+            </div>
+            <div>
+              <p
+                style="
+                  font-size: 11px;
+                  font-weight: 700;
+                  color: #8ce0de;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                "
+              >
+                ส่วนที่ 5
+              </p>
+              <p style="font-size: 16px; font-weight: 800; color: #1e1e2e">
+                ข้อเสนอแนะ
+              </p>
+            </div>
+          </div>
+
+          <div
+            style="
+              padding: 24px 28px;
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            "
+          >
+            <div>
+              <p
+                style="
+                  font-size: 13.5px;
+                  font-weight: 700;
+                  color: #374151;
+                  margin-bottom: 10px;
+                "
+              >
+                ข้อเสนอแนะเพิ่มเติม
+                <span style="color: #9ca3af; font-weight: 400">(ถ้ามี)</span>
+              </p>
+              <textarea
+                id="introduce"
+                rows="5"
+                style="
+                  width: 100%;
+                  border: 2px solid #e8e8f0;
+                  border-radius: 14px;
+                  padding: 14px 16px;
+                  font-family: inherit;
+                  font-size: 14px;
+                  color: #374151;
+                  background: #fafafa;
+                  resize: none;
+                  outline: none;
+                  transition: border-color 0.15s;
+                "
+                onfocus="
+                  this.style.borderColor = '#4dbfb9';
+                  this.style.background = '#fff';
+                "
+                onblur="
+                  this.style.borderColor = '#e8e8f0';
+                  this.style.background = '#fafafa';
+                "
+                placeholder="พิมพ์ข้อเสนอแนะของท่านที่นี่..."
+              ></textarea>
+            </div>
+
+            <!-- score preview -->
+            <div
+              style="
+                background: #f2fcfc;
+                border: 1.5px solid #e0f6f6;
+                border-radius: 16px;
+                padding: 18px 20px;
+              "
+            >
+              <p
+                style="
+                  font-size: 11px;
+                  font-weight: 700;
+                  color: #8ce0de;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                  margin-bottom: 14px;
+                "
+              >
+                📊 สรุปคะแนนของท่าน
+              </p>
+              <div
+                id="score-preview"
+                style="display: flex; flex-direction: column; gap: 10px"
+              ></div>
+            </div>
+          </div>
+
+          <div style="padding: 0 28px 28px; display: flex; gap: 10px">
+            <button class="btn-back" onclick="goTo(4)">←</button>
+            <button
+              class="btn-primary"
+              id="sub-btn"
+              onclick="submitForm()"
+              style="
+                background: linear-gradient(135deg, #059669, #10b981);
+                color: #fff;
+                box-shadow: 0 4px 20px rgba(5, 150, 105, 0.3);
+              "
+            >
+              ✓ ส่งแบบประเมิน
+            </button>
+          </div>
         </div>
       </div>
 
-      <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px;">
-
-        <div>
-          <p style="font-size:13.5px;font-weight:700;color:#374151;margin-bottom:10px;">
-            ข้อเสนอแนะเพิ่มเติม
-            <span style="color:#9ca3af;font-weight:400;">(ถ้ามี)</span>
-          </p>
-          <textarea id="introduce" rows="5"
-            style="width:100%;border:2px solid #e8e8f0;border-radius:14px;padding:14px 16px;
-                   font-family:inherit;font-size:14px;color:#374151;background:#fafafa;
-                   resize:none;outline:none;transition:border-color .15s;"
-            onfocus="this.style.borderColor='#4dbfb9';this.style.background='#fff'"
-            onblur="this.style.borderColor='#e8e8f0';this.style.background='#fafafa'"
-            placeholder="พิมพ์ข้อเสนอแนะของท่านที่นี่..."></textarea>
-        </div>
-
-        <!-- score preview -->
-        <div style="background:#f2fcfc;border:1.5px solid #e0f6f6;border-radius:16px;padding:18px 20px;">
-          <p style="font-size:11px;font-weight:700;color:#8ce0de;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;">
-            📊 สรุปคะแนนของท่าน
-          </p>
-          <div id="score-preview" style="display:flex;flex-direction:column;gap:10px;"></div>
-        </div>
-      </div>
-
-      <div style="padding:0 28px 28px;display:flex;gap:10px;">
-        <button class="btn-back" onclick="goTo(4)">←</button>
-        <button class="btn-primary" id="sub-btn" onclick="submitForm()"
-          style="background:linear-gradient(135deg,#059669,#10b981);color:#fff;box-shadow:0 4px 20px rgba(5,150,105,.3);">
-          ✓ ส่งแบบประเมิน
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════
+      <!-- ════════════════════════════════════
        PAGE 6 — THANK YOU
   ════════════════════════════════════ -->
-  <div class="page w-full max-w-lg" id="pg6">
-    <div class="card">
+      <div class="page w-full max-w-lg" id="pg6">
+        <div class="card">
+          <div
+            style="
+              background: linear-gradient(135deg, #059669, #10b981, #34d399);
+              padding: 40px 28px;
+              text-align: center;
+            "
+          >
+            <div
+              style="
+                width: 72px;
+                height: 72px;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2rem;
+                margin: 0 auto 16px;
+                animation: fadeUp 0.5s ease both;
+              "
+            >
+              ✅
+            </div>
+            <h2
+              style="
+                font-size: 1.4rem;
+                font-weight: 800;
+                color: #fff;
+                margin-bottom: 6px;
+              "
+            >
+              ขอบคุณมากครับ/ค่ะ
+            </h2>
+            <p
+              style="
+                color: rgba(255, 255, 255, 0.85);
+                font-size: 13.5px;
+                line-height: 1.6;
+              "
+            >
+              ได้รับการประเมินของท่านแล้ว<br />
+              จะนำไปพัฒนากิจกรรมต่อไป
+            </p>
+          </div>
 
-      <div style="background:linear-gradient(135deg,#059669,#10b981,#34d399);padding:40px 28px;text-align:center;">
-        <div style="width:72px;height:72px;background:rgba(255,255,255,.2);border-radius:50%;
-                    display:flex;align-items:center;justify-content:center;
-                    font-size:2rem;margin:0 auto 16px;animation:fadeUp .5s ease both;">✅</div>
-        <h2 style="font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:6px;">ขอบคุณมากครับ/ค่ะ</h2>
-        <p style="color:rgba(255,255,255,.85);font-size:13.5px;line-height:1.6;">
-          ได้รับการประเมินของท่านแล้ว<br>
-          จะนำไปพัฒนากิจกรรมต่อไป
-        </p>
-      </div>
+          <div style="padding: 24px 28px 28px">
+            <!-- final scores -->
+            <div
+              style="
+                border: 1.5px solid #e8e8f0;
+                border-radius: 16px;
+                overflow: hidden;
+                margin-bottom: 160px;
+              "
+            >
+              <div id="final-scores"></div>
+            </div>
 
-      <div style="padding:24px 28px 28px;">
-        <!-- final scores -->
-        <div style="border:1.5px solid #e8e8f0;border-radius:16px;overflow:hidden;margin-bottom:160px;">
-          <div id="final-scores"></div>
+            <button
+              onclick="resetForm()"
+              style="
+                width: 100%;
+                padding: 14px;
+                border-radius: 14px;
+                border: 2px solid #e8e8f0;
+                background: #fff;
+                color: #374151;
+                font-size: 14px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.15s;
+                font-family: inherit;
+              "
+              onmouseover="this.style.background = '#f0f0f8'"
+              onmouseout="this.style.background = '#fff'"
+            >
+              🔄 ทำแบบประเมินใหม่
+            </button>
+          </div>
         </div>
-
-        <button onclick="resetForm()"
-          style="width:100%;padding:14px;border-radius:14px;border:2px solid #e8e8f0;
-                 background:#fff;color:#374151;font-size:14px;font-weight:600;
-                 cursor:pointer;transition:all .15s;font-family:inherit;"
-          onmouseover="this.style.background='#f0f0f8'"
-          onmouseout="this.style.background='#fff'">
-          🔄 ทำแบบประเมินใหม่
-        </button>
       </div>
+      <p
+        style="
+          margin-top: 16px;
+          font-size: 12px;
+          color: #9ca3af;
+          text-align: center;
+        "
+      >
+        &copy; พัฒนาโดย ครูอั๋น ใจดี <span id="year"></span>
+      </p>
     </div>
-  </div>
-  <p style="margin-top:16px;font-size:12px;color:#9ca3af;text-align:center;">
-    &copy; พัฒนาโดย ครูอั๋น ใจดี <span id="year"></span>
-  </p>
-</div>
 
-<script>
+    <script>
+      document.getElementById("year").innerText = new Date().getFullYear();
+      // ══════════════════════════════════════════
+      //  CONFIG  👇 ใส่ exec URL ที่นี่
+      // ══════════════════════════════════════════
+      const GAS_URL =
+        "https://script.google.com/macros/s/AKfycbycqRuM2m71O4iJ0ESK7SPlGoHg9FEMMRjmNVLDTzqnnkni-eV8EAVUC2H5tywnu5PF/exec";
 
-document.getElementById('year').innerText = new Date().getFullYear()
-// ══════════════════════════════════════════
-//  CONFIG  👇 ใส่ exec URL ที่นี่
-// ══════════════════════════════════════════
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbycqRuM2m71O4iJ0ESK7SPlGoHg9FEMMRjmNVLDTzqnnkni-eV8EAVUC2H5tywnu5PF/exec';
+      // ══════════════════════════════════════════
+      //  QUESTIONS
+      // ══════════════════════════════════════════
+      const EMO = ["😞", "😕", "😐", "😊", "😍"];
+      const WORDS = ["น้อยที่สุด", "น้อย", "ปานกลาง", "มาก", "มากที่สุด"];
 
-// ══════════════════════════════════════════
-//  QUESTIONS
-// ══════════════════════════════════════════
-const EMO   = ['😞','😕','😐','😊','😍'];
-const WORDS = ['น้อยที่สุด','น้อย','ปานกลาง','มาก','มากที่สุด'];
+      const QS = {
+        pg2: [
+          { id: "check1_1", text: "รูปแบบในการจัดกิจกรรมมีความเหมาะสม" },
+          { id: "check1_2", text: "ระยะเวลาในการจัดกิจกรรมมีความเหมาะสม" },
+          {
+            id: "check1_3",
+            text: "กิจกรรมมีความเหมาะสมตามสถานการณ์ในปัจจุบัน",
+          },
+          { id: "check1_4", text: "ความพร้อมของอุปกรณ์โสตทัศนูปกรณ์" },
+          {
+            id: "check1_5",
+            text: "ความพร้อมของอาคารสถานที่ในการจัดการแข่งขัน",
+          },
+          { id: "check1_6", text: "ช่องทางการสมัครเข้าร่วมการแข่งขัน" },
+        ],
+        pg3: [
+          {
+            id: "check2_1",
+            text: "คณะกรรมการจัดงานสามารถให้ข้อมูลหรือตอบข้อซักถามได้อย่างดี",
+          },
+          {
+            id: "check2_2",
+            text: "คณะกรรมการจัดงานมีความสุภาพ เป็นมิตรและเป็นกันเอง",
+          },
+          {
+            id: "check2_3",
+            text: "การบริหาร / การอำนวยความสะดวกของคณะกรรมการจัดงาน",
+          },
+          { id: "check2_4", text: "คณะกรรมการจัดงานดำเนินงานได้อย่างรวดเร็ว" },
+          { id: "check2_5", text: "คณะกรรมการจัดงานมีมาตรฐานเชื่อถือได้" },
+        ],
+        pg4: [
+          {
+            id: "check3_1",
+            text: "รางวัลแต่ละกิจกรรมการแข่งขันมีความเหมาะสมกับประเภทของการแข่งขัน",
+          },
+          {
+            id: "check3_2",
+            text: "การประชาสัมพันธ์ข้อมูลข่าวสารในการสมัครเข้าร่วมการแข่งขัน",
+          },
+          {
+            id: "check3_3",
+            text: "การดำเนินกิจกรรมการแข่งขันเป็นระบบ มีขั้นตอนชัดเจน",
+          },
+          { id: "check3_4", text: "ภาพรวมของการจัดกิจกรรม" },
+        ],
+      };
+      const GLABEL = {
+        pg2: "รูปแบบงาน",
+        pg3: "คณะกรรมการ",
+        pg4: "ความพึงพอใจ",
+      };
+      const GPREFIX = { pg2: "1", pg3: "2", pg4: "3" };
 
-const QS = {
-  pg2: [
-    { id:'check1_1', text:'รูปแบบในการจัดกิจกรรมมีความเหมาะสม' },
-    { id:'check1_2', text:'ระยะเวลาในการจัดกิจกรรมมีความเหมาะสม' },
-    { id:'check1_3', text:'กิจกรรมมีความเหมาะสมตามสถานการณ์ในปัจจุบัน' },
-    { id:'check1_4', text:'ความพร้อมของอุปกรณ์โสตทัศนูปกรณ์' },
-    { id:'check1_5', text:'ความพร้อมของอาคารสถานที่ในการจัดการแข่งขัน' },
-    { id:'check1_6', text:'ช่องทางการสมัครเข้าร่วมการแข่งขัน' },
-  ],
-  pg3: [
-    { id:'check2_1', text:'คณะกรรมการจัดงานสามารถให้ข้อมูลหรือตอบข้อซักถามได้อย่างดี' },
-    { id:'check2_2', text:'คณะกรรมการจัดงานมีความสุภาพ เป็นมิตรและเป็นกันเอง' },
-    { id:'check2_3', text:'การบริหาร / การอำนวยความสะดวกของคณะกรรมการจัดงาน' },
-    { id:'check2_4', text:'คณะกรรมการจัดงานดำเนินงานได้อย่างรวดเร็ว' },
-    { id:'check2_5', text:'คณะกรรมการจัดงานมีมาตรฐานเชื่อถือได้' },
-  ],
-  pg4: [
-    { id:'check3_1', text:'รางวัลแต่ละกิจกรรมการแข่งขันมีความเหมาะสมกับประเภทของการแข่งขัน' },
-    { id:'check3_2', text:'การประชาสัมพันธ์ข้อมูลข่าวสารในการสมัครเข้าร่วมการแข่งขัน' },
-    { id:'check3_3', text:'การดำเนินกิจกรรมการแข่งขันเป็นระบบ มีขั้นตอนชัดเจน' },
-    { id:'check3_4', text:'ภาพรวมของการจัดกิจกรรม' },
-  ],
-};
-const GLABEL = { pg2:'รูปแบบงาน', pg3:'คณะกรรมการ', pg4:'ความพึงพอใจ' };
-const GPREFIX = { pg2:'1', pg3:'2', pg4:'3' };
-
-// ══════════════════════════════════════════
-//  BUILD RATING HTML
-// ══════════════════════════════════════════
-function buildQ(containerId, qs, prefix) {
-  document.getElementById(containerId).innerHTML = qs.map((q, i) => `
+      // ══════════════════════════════════════════
+      //  BUILD RATING HTML
+      // ══════════════════════════════════════════
+      function buildQ(containerId, qs, prefix) {
+        document.getElementById(containerId).innerHTML = qs
+          .map(
+            (q, i) => `
     <div class="q-item">
       <div class="q-label">
-        <span class="q-num">${prefix}.${i+1}</span>
+        <span class="q-num">${prefix}.${i + 1}</span>
         <span>${q.text}</span>
       </div>
       <div class="rating-wrap">
-        ${[1,2,3,4,5].map(v => `
+        ${[1, 2, 3, 4, 5]
+          .map(
+            (v) => `
         <div style="flex:1;">
           <input type="radio" class="r-input" name="${q.id}" id="${q.id}_${v}" value="${v}">
           <label class="r-btn" for="${q.id}_${v}">
-            <div class="r-face">${EMO[v-1]}</div>
+            <div class="r-face">${EMO[v - 1]}</div>
             <span class="r-num">${v}</span>
           </label>
-        </div>`).join('')}
+        </div>`,
+          )
+          .join("")}
       </div>
       <div style="display:flex;justify-content:space-between;margin-top:6px;padding:0 2px;">
         <span style="font-size:10px;color:#c4c4d4;">${WORDS[0]}</span>
         <span style="font-size:10px;color:#c4c4d4;">${WORDS[4]}</span>
       </div>
     </div>
-  `).join('');
-}
+  `,
+          )
+          .join("");
+      }
 
-// ══════════════════════════════════════════
-//  OPTION CARD CLICK
-// ══════════════════════════════════════════
-function initOpts() {
-  document.querySelectorAll('.opt').forEach(el => {
-    el.addEventListener('click', () => {
-      const name = el.dataset.name;
-      document.querySelectorAll(`.opt[data-name="${name}"]`).forEach(o => o.classList.remove('on'));
-      el.classList.add('on');
-      el.querySelector('input').checked = true;
-    });
-  });
-}
+      // ══════════════════════════════════════════
+      //  OPTION CARD CLICK
+      // ══════════════════════════════════════════
+      function initOpts() {
+        document.querySelectorAll(".opt").forEach((el) => {
+          el.addEventListener("click", () => {
+            const name = el.dataset.name;
+            document
+              .querySelectorAll(`.opt[data-name="${name}"]`)
+              .forEach((o) => o.classList.remove("on"));
+            el.classList.add("on");
+            el.querySelector("input").checked = true;
+          });
+        });
+      }
 
-// ══════════════════════════════════════════
-//  PROGRESS
-// ══════════════════════════════════════════
-const PLABELS = ['','ข้อมูลทั่วไป','รูปแบบงาน','คณะกรรมการ','ความพึงพอใจ','ข้อเสนอแนะ'];
-function updateProg(n) {
-  const wrap = document.getElementById('prog');
-  if (n < 1 || n > 5) { wrap.classList.add('hidden'); return; }
-  wrap.classList.remove('hidden');
-  document.getElementById('prog-label').textContent = PLABELS[n];
-  document.getElementById('prog-count').textContent = `${n} / 5`;
-  for (let i = 1; i <= 5; i++) {
-    const el = document.getElementById('ps' + i);
-    el.className = 'prog-step' + (i < n ? ' done' : i === n ? ' now' : '');
-  }
-}
+      // ══════════════════════════════════════════
+      //  PROGRESS
+      // ══════════════════════════════════════════
+      const PLABELS = [
+        "",
+        "ข้อมูลทั่วไป",
+        "รูปแบบงาน",
+        "คณะกรรมการ",
+        "ความพึงพอใจ",
+        "ข้อเสนอแนะ",
+      ];
+      function updateProg(n) {
+        const wrap = document.getElementById("prog");
+        if (n < 1 || n > 5) {
+          wrap.classList.add("hidden");
+          return;
+        }
+        wrap.classList.remove("hidden");
+        document.getElementById("prog-label").textContent = PLABELS[n];
+        document.getElementById("prog-count").textContent = `${n} / 5`;
+        for (let i = 1; i <= 5; i++) {
+          const el = document.getElementById("ps" + i);
+          el.className =
+            "prog-step" + (i < n ? " done" : i === n ? " now" : "");
+        }
+      }
 
-// ══════════════════════════════════════════
-//  NAVIGATION
-// ══════════════════════════════════════════
-function goTo(n) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('show'));
-  document.getElementById('pg' + n).classList.add('show');
-  updateProg(n);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+      // ══════════════════════════════════════════
+      //  NAVIGATION
+      // ══════════════════════════════════════════
+      function goTo(n) {
+        document
+          .querySelectorAll(".page")
+          .forEach((p) => p.classList.remove("show"));
+        document.getElementById("pg" + n).classList.add("show");
+        updateProg(n);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
 
-// ══════════════════════════════════════════
-//  VALIDATION
-// ══════════════════════════════════════════
-function chk(n) {
-  if (n === 1) {
-    if (!document.querySelector('input[name="status"]:checked')) { toast('กรุณาเลือกสถานภาพ'); return false; }
-    if (!document.querySelector('input[name="news"]:checked'))   { toast('กรุณาเลือกช่องทางที่ทราบข่าว'); return false; }
-    return true;
-  }
-  const map = {2:'pg2',3:'pg3',4:'pg4'};
-  const qs = QS[map[n]];
-  if (qs) for (const q of qs)
-    if (!document.querySelector(`input[name="${q.id}"]:checked`))
-      { toast('กรุณาให้คะแนนให้ครบทุกข้อ'); return false; }
-  return true;
-}
+      // ══════════════════════════════════════════
+      //  VALIDATION
+      // ══════════════════════════════════════════
+      function chk(n) {
+        if (n === 1) {
+          if (!document.querySelector('input[name="status"]:checked')) {
+            toast("กรุณาเลือกสถานภาพ");
+            return false;
+          }
+          if (!document.querySelector('input[name="news"]:checked')) {
+            toast("กรุณาเลือกช่องทางที่ทราบข่าว");
+            return false;
+          }
+          return true;
+        }
+        const map = { 2: "pg2", 3: "pg3", 4: "pg4" };
+        const qs = QS[map[n]];
+        if (qs)
+          for (const q of qs)
+            if (!document.querySelector(`input[name="${q.id}"]:checked`)) {
+              toast("กรุณาให้คะแนนให้ครบทุกข้อ");
+              return false;
+            }
+        return true;
+      }
 
-function next(from) {
-  if (!chk(from)) return;
-  if (from === 4) buildPreview();
-  goTo(from + 1);
-}
+      function next(from) {
+        if (!chk(from)) return;
+        if (from === 4) buildPreview();
+        goTo(from + 1);
+      }
 
-// ══════════════════════════════════════════
-//  SCORES
-// ══════════════════════════════════════════
-function avg(qs) {
-  return (qs.reduce((s,q) => {
-    const c = document.querySelector(`input[name="${q.id}"]:checked`);
-    return s + (c ? +c.value : 0);
-  }, 0) / qs.length).toFixed(2);
-}
+      // ══════════════════════════════════════════
+      //  SCORES
+      // ══════════════════════════════════════════
+      function avg(qs) {
+        return (
+          qs.reduce((s, q) => {
+            const c = document.querySelector(`input[name="${q.id}"]:checked`);
+            return s + (c ? +c.value : 0);
+          }, 0) / qs.length
+        ).toFixed(2);
+      }
 
-function scoreBar(val, label) {
-  const pct = (parseFloat(val) / 5 * 100).toFixed(0);
-  return `
+      function scoreBar(val, label) {
+        const pct = ((parseFloat(val) / 5) * 100).toFixed(0);
+        return `
   <div style="display:flex;align-items:center;gap:10px;">
     <span style="font-size:12px;color:#6b7280;width:100px;flex-shrink:0;">${label}</span>
     <div class="s-bar-bg"><div class="s-bar-fill" style="width:${pct}%"></div></div>
     <span style="font-size:13px;font-weight:700;color:#4dbfb9;width:32px;text-align:right;">${val}</span>
   </div>`;
-}
+      }
 
-function buildPreview() {
-  document.getElementById('score-preview').innerHTML =
-    Object.entries(QS).map(([k,qs]) => scoreBar(avg(qs), GLABEL[k])).join('');
-}
+      function buildPreview() {
+        document.getElementById("score-preview").innerHTML = Object.entries(QS)
+          .map(([k, qs]) => scoreBar(avg(qs), GLABEL[k]))
+          .join("");
+      }
 
-function buildFinalScores() {
-  const all = [...QS.pg2,...QS.pg3,...QS.pg4];
-  const total = (all.reduce((s,q) => {
-    const c = document.querySelector(`input[name="${q.id}"]:checked`);
-    return s + (c ? +c.value : 0);
-  }, 0) / all.length).toFixed(2);
+      function buildFinalScores() {
+        const all = [...QS.pg2, ...QS.pg3, ...QS.pg4];
+        const total = (
+          all.reduce((s, q) => {
+            const c = document.querySelector(`input[name="${q.id}"]:checked`);
+            return s + (c ? +c.value : 0);
+          }, 0) / all.length
+        ).toFixed(2);
 
-  const rows = Object.entries(QS).map(([k,qs], i, arr) => {
-    const a = avg(qs); const pct = (parseFloat(a)/5*100).toFixed(0);
-    return `<div style="display:flex;align-items:center;gap:12px;padding:14px 18px;
-              ${i < arr.length-1 ? 'border-bottom:1px solid #f0f0f8' : ''}">
+        const rows = Object.entries(QS)
+          .map(([k, qs], i, arr) => {
+            const a = avg(qs);
+            const pct = ((parseFloat(a) / 5) * 100).toFixed(0);
+            return `<div style="display:flex;align-items:center;gap:12px;padding:14px 18px;
+              ${i < arr.length - 1 ? "border-bottom:1px solid #f0f0f8" : ""}">
       <span style="font-size:12px;color:#6b7280;width:96px;flex-shrink:0;">${GLABEL[k]}</span>
       <div class="s-bar-bg"><div class="s-bar-fill" style="width:${pct}%"></div></div>
       <span style="font-size:14px;font-weight:700;color:#4dbfb9;width:32px;text-align:right;">${a}</span>
     </div>`;
-  }).join('');
+          })
+          .join("");
 
-  document.getElementById('final-scores').innerHTML = `
+        document.getElementById("final-scores").innerHTML = `
     <div style="display:flex;align-items:center;justify-content:space-between;
                 padding:16px 18px;background:#f2fcfc;border-bottom:1px solid #e0f6f6;">
       <span style="font-size:12px;font-weight:700;color:#8ce0de;letter-spacing:.06em;text-transform:uppercase;">คะแนนรวมเฉลี่ย</span>
       <span style="font-size:1.5rem;font-weight:800;color:#4dbfb9;">${total}<span style="font-size:13px;font-weight:500;color:#f49068;">/5</span></span>
     </div>
     ${rows}`;
-}
+      }
 
-// ══════════════════════════════════════════
-//  SUBMIT
-// ══════════════════════════════════════════
-function collect() {
-  const g = n => { const c = document.querySelector(`input[name="${n}"]:checked`); return c ? c.value : ''; };
-  return {
-    status:g('status'),news:g('news'),
-    check1_1:g('check1_1'),check1_2:g('check1_2'),check1_3:g('check1_3'),
-    check1_4:g('check1_4'),check1_5:g('check1_5'),check1_6:g('check1_6'),
-    check2_1:g('check2_1'),check2_2:g('check2_2'),check2_3:g('check2_3'),
-    check2_4:g('check2_4'),check2_5:g('check2_5'),
-    check3_1:g('check3_1'),check3_2:g('check3_2'),check3_3:g('check3_3'),check3_4:g('check3_4'),
-    introduce: document.getElementById('introduce').value.trim(),
-  };
-}
+      // ══════════════════════════════════════════
+      //  SUBMIT
+      // ══════════════════════════════════════════
+      function collect() {
+        const g = (n) => {
+          const c = document.querySelector(`input[name="${n}"]:checked`);
+          return c ? c.value : "";
+        };
+        return {
+          status: g("status"),
+          news: g("news"),
+          check1_1: g("check1_1"),
+          check1_2: g("check1_2"),
+          check1_3: g("check1_3"),
+          check1_4: g("check1_4"),
+          check1_5: g("check1_5"),
+          check1_6: g("check1_6"),
+          check2_1: g("check2_1"),
+          check2_2: g("check2_2"),
+          check2_3: g("check2_3"),
+          check2_4: g("check2_4"),
+          check2_5: g("check2_5"),
+          check3_1: g("check3_1"),
+          check3_2: g("check3_2"),
+          check3_3: g("check3_3"),
+          check3_4: g("check3_4"),
+          introduce: document.getElementById("introduce").value.trim(),
+        };
+      }
 
-async function submitForm() {
-  const btn = document.getElementById('sub-btn');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spin">⏳</span> กำลังส่ง...';
+      async function submitForm() {
+        const btn = document.getElementById("sub-btn");
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spin">⏳</span> กำลังส่ง...';
 
-  if (!GAS_URL || GAS_URL === 'YOUR_GAS_EXEC_URL_HERE') {
-    await new Promise(r => setTimeout(r, 1200));
-    buildFinalScores(); goTo(6); return;
-  }
+        if (!GAS_URL || GAS_URL === "YOUR_GAS_EXEC_URL_HERE") {
+          await new Promise((r) => setTimeout(r, 1200));
+          buildFinalScores();
+          goTo(6);
+          return;
+        }
 
-  try {
-    await fetch(GAS_URL, {
-      method:'POST', mode:'no-cors',
-      headers:{'Content-Type':'text/plain'},
-      body:JSON.stringify(collect()),
-    });
-    buildFinalScores(); goTo(6);
-  } catch(e) {
-    btn.disabled = false;
-    btn.innerHTML = '✓ ส่งแบบประเมิน';
-    toast('ส่งข้อมูลไม่สำเร็จ กรุณาลองใหม่');
-  }
-}
+        try {
+          await fetch(GAS_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain" },
+            body: JSON.stringify(collect()),
+          });
+          buildFinalScores();
+          goTo(6);
+        } catch (e) {
+          btn.disabled = false;
+          btn.innerHTML = "✓ ส่งแบบประเมิน";
+          toast("ส่งข้อมูลไม่สำเร็จ กรุณาลองใหม่");
+        }
+      }
 
-// ══════════════════════════════════════════
-//  TOAST
-// ══════════════════════════════════════════
-let tt;
-function toast(msg) {
-  const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.classList.add('show');
-  clearTimeout(tt);
-  tt = setTimeout(() => el.classList.remove('show'), 3000);
-}
+      // ══════════════════════════════════════════
+      //  TOAST
+      // ══════════════════════════════════════════
+      let tt;
+      function toast(msg) {
+        const el = document.getElementById("toast");
+        el.textContent = msg;
+        el.classList.add("show");
+        clearTimeout(tt);
+        tt = setTimeout(() => el.classList.remove("show"), 3000);
+      }
 
-// ══════════════════════════════════════════
-//  RESET
-// ══════════════════════════════════════════
-function resetForm() {
-  document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
-  document.querySelectorAll('.opt').forEach(o => o.classList.remove('on'));
-  document.getElementById('introduce').value = '';
-  const btn = document.getElementById('sub-btn');
-  btn.disabled = false;
-  btn.innerHTML = '✓ ส่งแบบประเมิน';
-  goTo(0);
-}
+      // ══════════════════════════════════════════
+      //  RESET
+      // ══════════════════════════════════════════
+      function resetForm() {
+        document
+          .querySelectorAll('input[type="radio"]')
+          .forEach((r) => (r.checked = false));
+        document
+          .querySelectorAll(".opt")
+          .forEach((o) => o.classList.remove("on"));
+        document.getElementById("introduce").value = "";
+        const btn = document.getElementById("sub-btn");
+        btn.disabled = false;
+        btn.innerHTML = "✓ ส่งแบบประเมิน";
+        goTo(0);
+      }
 
-// ══════════════════════════════════════════
-//  INIT
-// ══════════════════════════════════════════
-buildQ('q-pg2', QS.pg2, '1');
-buildQ('q-pg3', QS.pg3, '2');
-buildQ('q-pg4', QS.pg4, '3');
-initOpts();
-</script>
-</body>
+      // ══════════════════════════════════════════
+      //  INIT
+      // ══════════════════════════════════════════
+      buildQ("q-pg2", QS.pg2, "1");
+      buildQ("q-pg3", QS.pg3, "2");
+      buildQ("q-pg4", QS.pg4, "3");
+      initOpts();
+    </script>
+  </body>
 </html>
